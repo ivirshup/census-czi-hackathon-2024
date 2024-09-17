@@ -17,6 +17,10 @@ The initial two tasks for this project will be:
 
 The bucket we'll be working with is: `s3://tmp-census-zarr` on `us-west-2`.
 
+### AnnData queries
+
+* [OOC Dataframes for anndata](https://github.com/scverse/anndata/pull/1247)
+
 ### Vitessce
 
 * [Docs](https://python-docs.vitessce.io/index.html)
