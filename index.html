@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <script language="javascript">
+
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get("id");
+            const columns = params.get("columns") || "cell_type";
+
+            const url = `https://tmp-census-zarr.s3.us-west-2.amazonaws.com/v1/homo_sapiens/${id}.zarr`
+
+            const obsSets = columns.split(',').map(column => ({
+                name: column,
+                path: `obs/${column}`
+            }));
+
+            const payload = {"version": "1.0.15", "name": "", "description": "", "datasets": [{"uid": "A", "name": "", "files": [{"fileType": "anndata.zarr", "url": url, "options": {"obsEmbedding": [{"path": "obsm/X_umap", "dims": [0, 1], "embeddingType": "UMAP"}], "obsSets": obsSets, "obsFeatureMatrix": {"path": "X"}}}]}], "coordinationSpace": {"dataset": {"A": "A"}, "embeddingType": {"A": "UMAP"}}, "layout": [{"component": "scatterplot", "coordinationScopes": {"dataset": "A", "embeddingType": "A"}, "x": 0.0, "y": 0.0, "w": 6.0, "h": 6.0}, {"component": "obsSets", "coordinationScopes": {"dataset": "A"}, "x": 6.0, "y": 0.0, "w": 6.0, "h": 3.0}, {"component": "featureList", "coordinationScopes": {"dataset": "A"}, "x": 6.0, "y": 3.0, "w": 6.0, "h": 3.0}, {"component": "heatmap", "coordinationScopes": {"dataset": "A"}, "x": 0, "y": 6.0, "w": 12, "h": 6.0}], "initStrategy": "auto"}
+
+            window.location.href = `https://vitessce.io/#?theme=light&url=data:,${encodeURIComponent(JSON.stringify(payload))}`
+
+        </script>
+    </head>
+</html>
