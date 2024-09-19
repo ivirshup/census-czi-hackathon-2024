@@ -6,7 +6,7 @@
             const id = params.get("id");
             const columns = params.get("columns") || "cell_type";
 
-            const url = `https://tmp-census-zarr.s3.us-west-2.amazonaws.com/v1/homo_sapiens/${id}.zarr`
+            const url = `https://tmp-census-zarr.s3.us-west-2.amazonaws.com/v2/homo_sapiens/${id}.zarr`
 
             const obsSets = columns.split(',').map(column => ({
                 name: column,
